@@ -2,19 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css"  type="text/css"/>
     <title>Magical Mystery Theater</title>
 </head>
-<body>
-    <h1>Magical Mystery Theater</h1>
-    <button type="button" onclick="buyTicket()">Purchase Ticket</button>
+<body class="body-color-blue">
+    <main class="wrapper">
+        <h1>Magical Mystery Theater</h1>
+        <button type="button" onclick="buyTicket()"><span>Purchase Ticket</span></button>
+    </main>
+   
     <script>
+        "use strict"
          const GENERAL_ADMISSION_TICKET_COST = 20;
         const CHILD_AND_SENIOR_TICKET_COST = 10;
         const MATINEE_DISCOUNT = 3;
 
         function buyTicket(){
             const age = prompt('What is your age?');
-            const isMatinee = prompt('Are you attending a matinee show?').toLowerCase(); //chnange input to lower case
+            const isMatinee = prompt('Are you attending a matinee show?').toLowerCase(); //change input to lower case
            let cost = getBaseTicketCost(age);
            cost = applyMatineeDiscount(cost, isMatinee);
            alert('Your ticket will cost: $' + cost);

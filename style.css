@@ -1,0 +1,44 @@
+.body-color-blue{
+    background-color: rgb(63, 123, 151);
+}
+.body-color-pink{
+    background-color: rgb(131, 57, 106);
+}
+.wrapper {
+    position: absolute;
+    width: 260px;
+    padding: 40px;
+    height:200px;
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin: 0;
+    border: thick solid #ffff;
+    border-radius: 10px;
+    vertical-align: middle;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%); 
+}
+.wrapper h1{
+    color: #ffff;
+}
+button{
+    border: none;
+    padding: 8px;;
+    border-radius: 4px;
+}
+span{
+    font-size:large;
+}
+@media only screen and (max-width: 800px){
+    .wrapper{
+        width: 200px;
+    }
+    .wrapper h1{
+        font-size:x-large;
+    }
+    span{
+        font-size:small;
+    }
+}

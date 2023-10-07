@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Wild Waves Aquatic Park</title>
+    <link rel="stylesheet" href="style.css"  type="text/css"/>
+</head>
+<body class="body-color-pink">
+    <main class="wrapper">
+        <h1>Wild Waves Aquatic Park</h1>
+        <button type="button" onclick="buyTicket()"><span>Purchase Attraction</span></button>
+
+    </main>
+   
+    <script>
+        const WAVE_POOL_MIN_HEIGHT = 42; // in inches
+    	const WATERSLIDE_MIN_HEIGHT = 48; // in inches
+    	const LAZY_RIVER_MIN_HEIGHT = 36; // in inches
+
+        function buyTicket(){
+            const attractionTypeInput = prompt('Which attraction do you want to visit: type "wave" for wave pool, "water" for waterslide, or "river" for lazy river?').toLowerCase();
+            const userHeight = parseFloat(prompt('What is your height in inches?'));
+            const userWithAdult = prompt('Are you coming with adult, if yes type "Yes or Y').toLowerCase();
+            // console.log("User's selected attraction is " + attractionType);
+            // console.log("User's height is " + userHeight);
+            // console.log(typeof(userHeight));
+           const attractionType = withAdultAttraction(attractionTypeInput,userWithAdult);
+            const isAllowed = checkHeight (attractionType, userHeight);
+            if(isAllowed) {
+                alert(`You are allowed to visit the ${attractionType}. Enjoy your time!`);
+            }
+            else{
+                alert(`Sorry, you are not tall enough for the ${attractionType}.`);
+            }
+        }
+
+        // Function to check if the user is tall enough for the selected attraction
+        function checkHeight(attraction, height) {
+            switch (attraction) {
+                case 'wave':
+                return height >= WAVE_POOL_MIN_HEIGHT;
+                break;
+                case 'water':
+                return height >= WATERSLIDE_MIN_HEIGHT;
+                break;
+                case 'river':
+                return height >= LAZY_RIVER_MIN_HEIGHT;
+                break;
+                case 'wave, water and river':
+                    return height > WAVE_POOL_MIN_HEIGHT;
+                    break;
+                default:
+                return false; // Invalid attraction type
+            }
+        }
+        function withAdultAttraction(attraction, withAdult){
+            if(withAdult ==="yes" || withAdult ==="y"){
+                return attraction ="wave, water and river";
+            }
+            else return attraction;
+        }
+
+    </script>
+</body>
+</html>
