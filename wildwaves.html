@@ -18,14 +18,13 @@
     	const LAZY_RIVER_MIN_HEIGHT = 36; // in inches
 
         function buyTicket(){
-            const attractionTypeInput = prompt('Which attraction do you want to visit: type "wave" for wave pool, "water" for waterslide, or "river" for lazy river?').toLowerCase();
+            const attractionType = prompt('Which attraction do you want to visit: type "wave" for wave pool, "water" for waterslide, or "river" for lazy river?').toLowerCase();
             const userHeight = parseFloat(prompt('What is your height in inches?'));
-            const userWithAdult = prompt('Are you coming with adult, if yes type "Yes or Y').toLowerCase();
+            const userWithAdult = confirm("Are you with an adult? (OK for Yes, Cancel for No)");
             // console.log("User's selected attraction is " + attractionType);
             // console.log("User's height is " + userHeight);
             // console.log(typeof(userHeight));
-           const attractionType = withAdultAttraction(attractionTypeInput,userWithAdult);
-            const isAllowed = checkHeight (attractionType, userHeight);
+            const isAllowed = checkHeight (attractionType, userHeight, userWithAdult);
             if(isAllowed) {
                 alert(`You are allowed to visit the ${attractionType}. Enjoy your time!`);
             }
@@ -35,7 +34,10 @@
         }
 
         // Function to check if the user is tall enough for the selected attraction
-        function checkHeight(attraction, height) {
+        function checkHeight(attraction, height, withAdult) {
+            if(height > 42 && withAdult){
+                return true;
+            }
             switch (attraction) {
                 case 'wave':
                 return height >= WAVE_POOL_MIN_HEIGHT;
