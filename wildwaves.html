@@ -36,7 +36,10 @@
         // Function to check if the user is tall enough for the selected attraction
         function checkHeight(attraction, height, withAdult) {
             if(height > 42 && withAdult){
-                return true;
+                return true;  //If taller than 42 inches and with an adult, allow access to all attractions
+            }
+            else{
+                return false;
             }
             switch (attraction) {
                 case 'wave':
