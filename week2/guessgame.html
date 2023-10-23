@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess Game</title>
+</head>
+<body>
+    <h1>Number Guessing Game</h1>
+    <button onclick="runGame()">Play</button>
+    <script>
+     
+    
+
+        function runGame(){
+            let guessString ="";
+        let guessNumber = 0;
+        let result = false;
+        let count = 0;
+        const target = Math.floor(Math.random() * 100)+1;
+
+        do{
+            guessString = prompt('Guess a num from 1 to 100');
+            if(guessString === null){
+                return;
+            }
+            guessNumber = guessString;
+            count+=1;
+            result = checkGuess(guessNumber, target);
+
+        }
+        while(!result);
+        alert("you win!");
+           
+        }
+function checkGuess(num, target){
+    let result = false;
+    if(isNaN(num)){
+        alert("please enter valid number");
+    }
+    else if (num < 0){
+        alart("please enter number between 0 and 100")
+    }
+    else if (num < target){
+        alart("too low guess again")
+    }
+    else if (num > target){
+        alart("too high guess again")
+    }
+    else
+    result = true;
+}
+
+    </script>
+</body>
+</html>

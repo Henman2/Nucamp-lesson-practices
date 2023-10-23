@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Wild Waves Aquatic Park</title>
-    <link rel="stylesheet" href="style.css"  type="text/css"/>
-</head>
-<body class="body-color-pink">
-    <main class="wrapper">
-        <h1>Wild Waves Aquatic Park</h1>
-        <button type="button" onclick="buyTicket()"><span>Purchase Attraction</span></button>
-    </main>
-    
-    <script>
-        const WAVE_POOL_MIN_HEIGHT = 42; // in inches
+const WAVE_POOL_MIN_HEIGHT = 42; // in inches
     	const WATERSLIDE_MIN_HEIGHT = 48; // in inches
     	const LAZY_RIVER_MIN_HEIGHT = 36; // in inches
 
@@ -28,7 +14,6 @@
                 alert(`Sorry, you are not tall enough for the ${attractionType}.`);
             }
         }
-
         // Function to check if the user is tall enough for the selected attraction
         function checkHeight(attraction, height, withAdult) {
             if(height > 42 && withAdult){
@@ -48,6 +33,3 @@
                 return false; // Invalid attraction type
             }
         }
-    </script>
-</body>
-</html>

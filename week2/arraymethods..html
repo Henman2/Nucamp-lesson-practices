@@ -1,0 +1,76 @@
+<script>
+console.log(true+false) //display 1
+console.log([1]>null) //display true
+console.log("false" == false) //display false
+console.log(!!"false"== !!"true") //display true due to type coercion
+  /* 1 Mutable Array Methiods * /
+  let myArray = ["a", "b", "c", "d"];
+  //remove and return the last element from an array
+  let result = myArray.pop();
+  console.log(result);
+  console.log(myArray);
+
+  //add one or more elements to the end of an array
+  let newLength = myArray.push("f");
+  //returns the new length of the array
+  console.log(newLength);
+  console.log(myArray);
+
+  //removes the first element from the array and return that element
+  let result2 = myArray.shift();
+  console.log(result2);
+  console.log(myArray);
+
+  //add one or more items at begining of the array
+  let result3= myArray.unshift("g", "h");
+  console.log(result3);
+  console.log(myArray);
+
+    /* 1 Immutable Array Methiods * /
+    let joinArray = myArray.join(" ");
+      console.log(joinArray); //eturn strings of the array element
+  console.log(myArray[6]);
+
+  let included = myArray.includes("c");
+  console.log(included); //return boolean (true or false)
+
+  let indexOfA = myArray.indexOf("c");
+  //return the index number of the array, if no item it return (-1)
+  console.log(indexOfA); //2
+
+  //join two arrays using concat()
+  let arr1 = [1,2,3];
+  let arr2 = [4,5,6];
+  let arr3 = arr1.concat(arr2);
+  console.log(arr3); //return mergeed copy of the two array
+
+  let myArray = ["a", "b", "c", "c", "d"];
+ //use splice() to insert, remove and replace elements.
+
+ //syntax: myArray(start[, deleteCount, elem1,...elemN]);
+
+ /*starting from the index start: removes deleteCount
+ elements and then inserts elem1, ..., elemN */
+
+ //Returns the array of removed elements.
+ let splicedArr1 = myArray.splice(1, 2);
+ console.log(splicedArr1);//remove and return (b, c)
+ console.log(myArray);
+ //insert
+ let splicedArrRep = myArray.splice(1, 0, "b", "e");
+ console.log(splicedArrRep);//return empty array since no element was removed
+ console.log(myArray);  //["a", "b", "e", "c", "d"]
+
+
+ /* slice() returns a new array copying to it all items from index start to end
+ (not including end) */
+ let slicedArrayCoppy = myArray.slice();
+ console.log(slicedArrayCoppy); //get a copy of whole Array ["a", "b", "e", "c", "d"]
+ let slicedArray = myArray.slice(1, 4);
+ console.log(slicedArray); //["b", "e", "c"]
+
+ class dragon{
+  name
+ }
+
+</script>
