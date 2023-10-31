@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    <title>Shopping List App</title>
+</head>
+<body>
+    <div class="box">
+        <h1>My Shopping List</h1>
+    </div>
+    
+    <div class="box">
+        <form id="myForm">
+            <div class="item">
+            <input placeholder="Click here to add new item" id="item" type="text" name="item">
+            <button class="roundBtn" type="submit" onclick="getItem()">+</button>
+        </div> 
+        </form>
+        <ul id="shoppingList">
+            <!-- list items will go into this ul via DOM manipulation -->
+        </ul>
+    </div>
+    
+    <script>
+        // add your JavaScript code here
+        let listArray = []; // Define an empty array to store shopping list items.
+        // Get a reference to the <ul> element with the ID "shoppingList."
+        const shoppingList = document.getElementById("shoppingList");
+        // Define a function called getItem() to be called when the "Add" button is clicked.
+        function getItem(){
+            event.preventDefault(); // Prevent the form submission from refreshing the page.
+            // Get the value of the input field with the ID "item."
+            let inputItem = document.getElementById('item').value;
+            inputItem = inputItem.toLowerCase();
+            // console.log(inputItem);
+
+             // Check if the input item is not already in the listArray.
+            if(!listArray.includes(inputItem)){
+                listArray.push(inputItem); // Add the input item to the listArray
+                 // Clear the existing list
+                
+                let sortedListItems = listArray.sort()
+                // Reset the form by clearing the input field.
+                document.getElementById("myForm").reset();
+                 // Call the makeList() function to display the sorted list items on the webpage.
+                //  removeList() or set the shoppinglist innerthml to empty;
+                makeList(sortedListItems);
+                console.log(sortedListItems);
+            }
+            else{
+                alert("listArray already contains item");
+            }   
+        }
+
+        function makeList(arrayList){
+            
+            shoppingList.innerHTML ='';
+            for(const item of arrayList){
+                const list = document.createElement("li"); // Create a new <li> element.
+                list.textContent = item; //Set the text content of the <li> element.
+                    //Add event listeners to the list items to trigger the removeItem() function
+                list.addEventListener("click", removeItem);
+                shoppingList.appendChild(list);
+               
+            }
+        }
+
+        function removeList(){
+            while(shoppingList.firstChild){
+                shoppingList.removeChild(shoppingList.firstChild);
+            }
+
+        }
+
+        function removeItem(event){
+            //Extract the value from the clicked element's textContent
+            const item = event.currentTarget.textContent;
+            const itemIndex = listArray.indexOf(item);
+            // Check if the item was found in the listArray before attempting to remove it.
+            if( itemIndex !== -1){
+                listArray.splice(itemIndex, 1);
+                
+                //removeList() //use this or set the shoppingList.innerHTML to empty
+                makeList(listArray)  //Update the list on the webpage
+
+            }
+            
+
+        }
+        
+    </script>
+</body>
+</html>

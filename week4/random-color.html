@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main{
+            margin-top: 40px;
+            background-color: #E4E9FD;
+            min-height: 90vh;
+            font-family: 'helvetica neue';
+            vertical-align: middle;
+            text-align: center;
+            padding-top:10px;
+        }
+        button{
+            background-color: #16113f;
+            border: none;
+            padding: 8px;;
+            color: #fff;
+            border-radius: 4px;
+            margin:4px;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: #8190e6;
+        }
+        #container{
+            position: absolute;
+            width: 600px;
+            padding: 40px;
+            height:200px;
+            /* margin-left: auto;
+            margin-right: auto; */
+            margin: 0;
+            border: thick solid #ffff;
+            border-radius: 10px;
+            vertical-align: middle;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%); 
+            background-color: #FFFFFF;
+        }
+        
+    </style>
+</head>
+<body>
+    <main>
+        <button id="colorBtn">Change Color</button>
+        <button id="resetBtn">Reset Color</button>
+        <div id="container">Color Code: <span id="colorCode">#FFFFFF</span></div>
+
+    </main>
+    <script>
+        function generateColorCode() {
+            const letters = '0123456789ABCDEF'
+            let color = '#';           
+            for(let i = 0; i < 6; i++) {
+               color+= letters[Math.floor(Math.random()*16)];
+                // console.log(Math.floor(Math.random()*16));
+            }
+            // console.log(color);
+            return color
+        }
+        const colorBtn = document.getElementById('colorBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const container = document.getElementById('container');
+       /* colorBtn.addEventListener('mouseover', ()=>{
+            colorBtn.style.backgroundColor = '#8190e6'
+        });
+        colorBtn.addEventListener('mouseout', ()=>{
+            colorBtn.style.backgroundColor = '#16113f'
+        })
+        */
+        colorBtn.addEventListener('click', ()=>{
+            const colorCode = generateColorCode();
+            container.style.backgroundColor = colorCode;
+            container.firstElementChild.innerHTML = colorCode;
+        });
+        resetBtn.addEventListener('click', ()=>{
+            container.style.backgroundColor = "#FFFFFF";
+            container.firstElementChild.innerHTML = '#FFFFFF';
+        })
+       </script>
+    
+    
+</body>
+</html>

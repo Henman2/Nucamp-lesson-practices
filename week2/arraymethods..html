@@ -43,14 +43,14 @@ console.log(!!"false"== !!"true") //display true due to type coercion
   let arr2 = [4,5,6];
   let arr3 = arr1.concat(arr2);
   console.log(arr3); //return mergeed copy of the two array
-
+*/
   let myArray = ["a", "b", "c", "c", "d"];
  //use splice() to insert, remove and replace elements.
 
  //syntax: myArray(start[, deleteCount, elem1,...elemN]);
 
  /*starting from the index start: removes deleteCount
- elements and then inserts elem1, ..., elemN */
+ elements and then inserts elem1, ..., elemN 
 
  //Returns the array of removed elements.
  let splicedArr1 = myArray.splice(1, 2);
@@ -64,7 +64,7 @@ console.log(!!"false"== !!"true") //display true due to type coercion
 
  /* slice() returns a new array copying to it all items from index start to end
  (not including end) */
- let slicedArrayCoppy = myArray.slice();
+ let slicedArrayCoppy = myArray.slice(0, 1);
  console.log(slicedArrayCoppy); //get a copy of whole Array ["a", "b", "e", "c", "d"]
  let slicedArray = myArray.slice(1, 4);
  console.log(slicedArray); //["b", "e", "c"]

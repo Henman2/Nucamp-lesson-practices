@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List App</title>
+    <style>
+        ul {
+            list-style-type: "\2610 ";
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Shopping List</h1>
+    <form id="myForm">
+        <label for="item">Add an item:</label>
+        <input id="item" type="text" name="item">
+        <button onclick="getItem()">Add</button>
+    </form>
+    <ul id="shoppingList">
+        <!-- list items will go into this ul via DOM manipulation -->
+    </ul>
+    <script>
+        // add your JavaScript code here
+        let listArray = [];
+        const shoppingList = document.getElementById("shoppingList");
+        function getItem(){
+            event.preventDefault();
+            let inputItem = document.getElementById('item').value;
+            // console.log(inputItem);
+            if(!listArray.includes(inputItem)){
+                listArray.push(inputItem);
+            }
+            else{
+                console.log("listArray contains item");
+            } 
+            let sortedListItems = listArray.map(item =>{
+                return item.toLowerCase();
+            })
+            sortedListItems = sortedListItems.sort()
+            document.getElementById("myForm").reset();
+            makeList(sortedListItems);
+            console.log(sortedListItems);
+        }
+
+        function makeList(arrayList){
+            // shoppingList.innerHTML = '';
+            for(const item of arrayList){
+                const list = document.createElement("li");
+                list.textContent = item;
+                shoppingList.appendChild(list);
+            }
+        }
+    </script>
+</body>
+</html>
