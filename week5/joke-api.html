@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //using promise with then and catch
+      /*  fetch("https://official-joke-api.appspot.com/random_joke")
+        .then((response) => response.json())
+        .then((data) =>
+        console.log(`Here's a joke: ${data.setup}\n${data.punchline}`)
+        )
+        .catch((error) => console.error("There was an error!", error));
+        */
+      //Using promise with asyn and await
+      async function fetchData() {
+        try {
+          let response = await fetch(
+            "https://official-joke-api.appspot.com/random_joke"
+          );
+          let data = response.json();
+          console.log(data);
+          console.log(`Here's a joke: ${data.setup}\n${data.punchline}`);
+        } catch {
+          (err) => {
+            console.log(err);
+          };
+        }
+      }
+      fetchData();
+    </script>
+  </body>
+</html>

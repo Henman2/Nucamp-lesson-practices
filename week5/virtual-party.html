@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Code Challenge: Virtual Party</h1>
+
+    <h2>Scenario</h2>
+    <p>
+      You are hosting a virtual party, and you want to ensure that your guests
+      have an amazing time. You'll need to send out invitations, prepare
+      activities, open the virtual dance floor, give a host speech, and even
+      surprise your guests with a special DJ appearance!
+    </p>
+    <p>
+      In this exercise, you will complete the JavaScript functions to create a
+      simulated virtual party experience using both synchronous and asynchronous
+      programming.
+    </p>
+
+    <button id="launch-button">Launch Party!</button>
+    <hr />
+
+    <script>
+      // Array of guests for the virtual party
+      const guests = [
+        "Ayaan",
+        "Maria",
+        "Chen",
+        "Oliver",
+        "Fatima",
+        "Satoshi",
+        "Lucia",
+        "Kalani",
+        "Jamal",
+        "Nadia",
+        "Thabo",
+      ];
+
+      // Task 1: Send Invitations
+      function sendInvitations() {
+        // Use a for...of loop to iterate over the guests array
+        // Inside the loop, log a message to invite each guest
+        for (guest of guests) {
+          console.log(`sending invitation to ${guest} `);
+        }
+      }
+      // sendInvitations();
+
+      // Task 2: Prepare Party Activities
+      function prepareActivities() {
+        // Use setTimeout to simulate the time it takes to prepare the activities (2 seconds)
+        // Inside the setTimeout callback, log a message announcing that the activities are ready
+        setTimeout(() => {
+          console.log(`Invitation Actvities ready`);
+        }, 2000);
+      }
+      // prepareActivities();
+
+      // Task 3: Virtual Dance Floor
+      let intervalID = null;
+      function virtualDanceFloor() {
+        // Use setInterval to periodically log a message inviting guests to dance (every 1 second)
+        // Inside the setInterval callback, stop after logging 5 messages
+        // Initialize an interval ID to keep track of the setInterval
+
+        if (intervalID !== null) {
+          clearInterval(intervalID); // Clear the previous interval if it exists
+        }
+        intervalID = setInterval(() => {
+          if (guests.length === 0) {
+            console.log("All guests have been invited.");
+            clearInterval(intervalID);
+          } else {
+            let randomIndex = Math.floor(Math.random() * guests.length);
+            let invitedGuest = guests[randomIndex];
+            console.log(`Invite ${invitedGuest} to dance floor`);
+            guests.splice(randomIndex, 1); // Remove the invited guest from the array
+          }
+        }, 1000);
+      }
+      // virtualDanceFloor();
+      // Task 4: Host Speech
+      function hostSpeech() {
+        // Log a welcoming message immediately
+        // Use setTimeout to log a second message after a delay (1.5 seconds)
+        console.log("Hello you are welcome to the party");
+        setTimeout(() => {
+          console.log("Enjoy the pary");
+        }, 1500);
+      }
+      // hostSpeech();
+      // Challenge Task: Surprise Guest
+      function surpriseGuest() {
+        // Use setTimeout to log a message announcing the surprise guest after a delay (3 seconds)
+        setTimeout(() => {
+          console.log("There are some surprises for you");
+        }, 3000);
+      }
+      // surpriseGuest();
+
+      // Launch Party Event
+      function launchParty() {
+        // Call all the party functions in the proper sequence
+        // You may need to consider the timing and order of function calls to create a coherent party sequence
+        sendInvitations();
+        prepareActivities();
+        virtualDanceFloor();
+        hostSpeech();
+        surpriseGuest();
+      }
+
+      // Add an event listener on the "Launch Party!" button to call the launchParty function when clicked
+      document
+        .getElementById("launch-button")
+        .addEventListener("click", launchParty);
+    </script>
+  </body>
+</html>

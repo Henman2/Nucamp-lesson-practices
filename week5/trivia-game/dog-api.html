@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Dog Image App</title>
+    <style type="text/css">
+      .body-color-blue{
+    background-color: rgb(63, 123, 151);
+}
+      .wrapper{
+        position: absolute;
+    width: 500px;
+    padding: 40px;
+    height:500px;
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin: 0;
+    border: thick solid #ffff;
+    border-radius: 10px;
+    vertical-align: middle;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%); 
+    background-color: rgba(53, 22, 48, 0.8);
+}
+      
+    </style>
+  </head>
+  <body>
+    <main >
+      <button onclick="fetchDog()">Get a Random Dog</button>
+    <div class="wrapper" id="dog"></div>
+
+    </main>
+    
+    <script src="dogs.js"></script>
+  </body>
+  <script>
+    const url = "https://dog.ceo/api/breeds/image/random";
+    let showDog = document.getElementById("dog");
+    // let imageDisplayed = false; // Flag to track if the image has been displayed
+    async function fetchDog() {
+      try {
+        let response = await fetch(url);
+        let data = await response.json();
+        console.log(data);
+        displayDog(data.message);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+//use this if you want to display the image one at a time
+    function displayDog(imgurl){
+       showDog.innerHTML = `<img style="width:400px" src="${imgurl}" />`;
+    }
+    // function displayDog(imgurl) {
+
+    //     const img = document.createElement("img");
+    //     img.src = imgurl;
+    //     img.alt = "random dogs";
+    //     img.width = 500;
+    //     showDog.appendChild(img);
+    //     imageDisplayed = true; // Set the flag to true to indicate that the image has been displayed
+    // }
+  </script>
+</html>
