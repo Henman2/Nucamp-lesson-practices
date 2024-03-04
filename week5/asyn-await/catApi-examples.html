@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper{
+            position: relative;
+            width: 500px;
+            padding: 40px;
+            height:500px;
+            background-color: rgba(53, 22, 48, 0.8);
+            /* margin-left: auto;
+            margin-right: auto; */
+            margin: 0;
+            border: thick solid #ffff;
+            border-radius: 10px;
+            vertical-align: middle;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%); 
+            
+        }
+
+        main{
+        position: absolute;
+                width:100%;
+        height:100%;
+                text-align: center;
+                top: 50%;
+                left: 50%;
+                transform: translateY(-50%) translateX(-50%);
+        }
+        button{
+            border: none;
+            padding: 12px;;
+            border-radius: 6px;
+            color: white;
+        background-color: rgba(53, 22, 48, 0.8);
+        }
+        h1{
+        color: white;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: rgba(53, 22, 48, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Get Images of Randam Pet Cats</h1>
+        <button onclick="fetchCat()">Get Picture</button>
+            <div class="wrapper" id="cat"></div>
+        </main>  
+        <script>
+
+            const apiURL = "https://api.thecatapi.com/v1/images/search";
+            let showCat = document.getElementById("cat");
+            // let imageDisplayed = false; // Flag to track if the image has been displayed
+            async function fetchCat() {
+                try {
+                    let response = await fetch(apiURL);
+                    let catData = await response.json();
+                    console.log(catData);
+                    displayCat(catData[0].url);
+                } catch (err) {
+                    console.error(err);
+                }
+            }
+            function displayCat(imgurl){
+            showCat.innerHTML = `<img style="width:400px" src="${imgurl}" />`;
+            } 
+
+        </script>      
+</body>
+</html>
